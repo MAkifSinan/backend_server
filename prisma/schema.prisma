@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+
+  provider = "prisma-client-js"
+
+}
+
+datasource db {
+
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+
+}
+
+model User {
+
+  id        Int     @id @default(autoincrement()) 
+  username String?
+  password String 
+  school_number String?
+  role Int?
+  token String?
+  Internship_infos String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+model Corporation {
+
+  id        Int     @id @default(autoincrement())
+  company_name      String?
+  company_title     String?
+  company_address   String?
+  company_working_area String?
+  company_phone_num String?
+  company_web_address String?
+  company_fax_address String?
+  company_verify Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+model Internship {
+
+  id        Int     @id @default(autoincrement())
+  User_student_name      String 
+  User_school_number String
+  company_name      String?
+  company_title     String?
+  company_address  String?
+  company_phone_num String?
+  company_web_address String?
+  company_fax_address String?
+  company_working_area String?
+  company_verify Boolean
+
+  Internship_start_date String?
+  Internship_end_date String?
+  Internship_period String?
+  Internship_type String?
+  Internship_verify Boolean
+  Internship_verifyDays String?
+  Internship_createdAt DateTime @default(now())
+  Internship_updatedAt DateTime @updatedAt
+
+}
